@@ -3,7 +3,6 @@ host: s3.eu-west-1.amazonaws.com
 access_key_id: AKIAJPIOADXGB7ZUNJGQ
 secret_access_key: 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
 bucket_name: louay-morsi.me
-local_path: src/
 
 exclude:
     - .gitignore
