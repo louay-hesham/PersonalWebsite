@@ -9,6 +9,7 @@ import { WorkExperienceComponent } from './work-experience/work-experience.compo
 import { QuickInfoComponent } from './quick-info/quick-info.component';
 import { EducationComponent } from './education/education.component';
 import { FooterComponent } from './footer/footer.component';
+import { AwardsComponent } from './awards/awards.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     WorkExperienceComponent,
     QuickInfoComponent,
     EducationComponent,
-    FooterComponent
+    FooterComponent,
+    AwardsComponent
   ],
   imports: [
     BrowserModule,

@@ -17,13 +17,14 @@
     <div align="Center">
     	<button class="btn btn-primary col-md-2" (click)="toggle(0)">Work Experience</button>
     	<button class="btn btn-primary col-md-2" (click)="toggle(1)">Education</button>
-    	<button class="btn btn-primary col-md-2" (click)="toggle(2)">Awards & Acheivments</button>
+    	<button class="btn btn-primary col-md-2" (click)="toggle(2)">Awards & Achievments</button>
     	<button class="btn btn-primary col-md-2" (click)="toggle(3)">Projects</button>
     	<button class="btn btn-primary col-md-2" (click)="toggle(4)">Skills</button>
     </div>
     <br>
     <app-work-experience *ngIf="checkVisibility(0)"></app-work-experience>
     <app-education *ngIf="checkVisibility(1)"></app-education>
+    <app-awards *ngIf="checkVisibility(2)"></app-awards>
 
   </div>
 </div>
