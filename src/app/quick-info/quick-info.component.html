@@ -7,21 +7,23 @@
     </p>
 
     <h3>Quick info</h3>
-    <button class="btn btn-primary" (click)="toggle(0)">Work Experience</button>
-    <app-work-experience *ngIf="checkVisibility(0)"></app-work-experience>
+    
     <ul>
       <li><b>Full Name:</b> Louay Hesham Saber Mohamed Morsi</li>
       <li><b>City of residence:</b> Alexandria, Egypt</li>
-      <li>
-        <b>Work Experience:</b>
-        <ul>
-          <li>Intern Software Development Engineer at <b>Amazon Web Service in Cape Town</b> (Sep - Nov 2017)</li>
-          <li>Teacher at <b>Mindz Training Center</b> (Jul - Aug 2017)</li>
-          <li>Intern Software Development Engineer at <b>Microsoft Advanced Technology Lab in Cairo</b> (Jul - Aug 2016)</li>
-          <li>Intern Software Development Engineer at <b>Eventum IT Solutions in Alexandria</b> (Feb 2016)</li>
-          <li>Coach and Teacher at <b>Notions Development Academy</b> (Feb - Jul 2015)</li>
-        </ul>
-      </li>
+    </ul>
+
+    <div align="Center">
+    	<button class="btn btn-primary col-md-2" (click)="toggle(0)">Work Experience</button>
+    	<button class="btn btn-primary col-md-2" (click)="toggle(1)">Education</button>
+    	<button class="btn btn-primary col-md-2" (click)="toggle(2)">Awards & Acheivments</button>
+    	<button class="btn btn-primary col-md-2" (click)="toggle(3)">Projects</button>
+    	<button class="btn btn-primary col-md-2" (click)="toggle(4)">Skills</button>
+    </div>
+
+    <app-work-experience *ngIf="checkVisibility(0)"></app-work-experience>
+
+    <ul>
       <li>
         <b>Education:</b>
         <ul>
