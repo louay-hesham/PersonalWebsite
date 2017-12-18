@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { QuickInfoComponent } from './quick-info/quick-info.component';
 import { EducationComponent } from './education/education.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EducationComponent } from './education/education.component';
     AppComponent,
     WorkExperienceComponent,
     QuickInfoComponent,
-    EducationComponent
+    EducationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
