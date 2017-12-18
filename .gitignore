@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 dandelion.yml
+/bower_components

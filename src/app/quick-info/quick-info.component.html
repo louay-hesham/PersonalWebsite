@@ -5,7 +5,10 @@
       I'm an undergraduate software development engineer. This is my personal website that I made to host some of my personal college projects.<br>
       I'm currently enrolled in Faculty of Engineering, Computer and Communications department in Alexandria university seeking my bachelor's degree.
     </p>
+
     <h3>Quick info</h3>
+    <button class="btn btn-primary" (click)="toggle(0)">Work Experience</button>
+    <app-work-experience *ngIf="checkVisibility(0)"></app-work-experience>
     <ul>
       <li><b>Full Name:</b> Louay Hesham Saber Mohamed Morsi</li>
       <li><b>City of residence:</b> Alexandria, Egypt</li>
