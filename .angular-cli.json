@@ -11,9 +11,7 @@
         "assets",
         "favicon.ico",
 	"Resume.pdf",
-	"ssp_helper",
-	"ng-collapsible-block.js",
-	"ng-collapsible-block.css"
+	"ssp_helper"
       ],
       "index": "index.html",
       "main": "main.ts",

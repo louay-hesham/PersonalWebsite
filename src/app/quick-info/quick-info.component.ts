@@ -44,9 +44,9 @@ export class QuickInfoComponent implements OnInit {
   	var i:number;
   	for (i = 0; i < 5; i++){
   		if (i != v)
-  			visible = visible & !this.visibility[i];
+  			visible = visible && !this.visibility[i];
 			else 
-				visible = visible & this.visibility[i];
+				visible = visible && this.visibility[i];
   	}
   	return visible;
   }
