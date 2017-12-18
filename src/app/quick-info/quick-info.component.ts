@@ -6,49 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quick-info.component.css']
 })
 export class QuickInfoComponent implements OnInit {
-
-	public workExperienceVisible: boolean;
-	public educationVisible: boolean;
-	public awardsVisible: boolean;
-	public projectsVisible: boolean;
-	public skillsVisible: boolean;
-
-	public visibility: boolean[] = [];
+  public buttons: string[];
+	public visibility: boolean[];
+  public selectedIndex: number;
 
   constructor() {
-  	this.workExperienceVisible = false;
-  	this.educationVisible = false;
-  	this.awardsVisible = false;
-  	this.projectsVisible = false;
-  	this.skillsVisible = false;
-  	this.visibility.push(this.workExperienceVisible);
-  	this.visibility.push(this.educationVisible);
-  	this.visibility.push(this.awardsVisible);
-  	this.visibility.push(this.projectsVisible);
-  	this.visibility.push(this.skillsVisible);
+    this.buttons = ["Work Experience", "Education", "Awards & Achievments", "Projects", "Skills"];
+    this.selectedIndex = -1;
   }
 
   ngOnInit() { }
 
-  toggle(v) {
-  	var i:number;
-  	for (i = 0; i < 5; i++){
-  		if (i != v)
-  			this.visibility[i] = false;
-  	}
-  	this.visibility[v] = !this.visibility[v];
+  itemClicked(i) {
+    if (this.selectedIndex == i)
+      this.selectedIndex = -1;
+    else 
+      this.selectedIndex = i;
   }
 
-  checkVisibility(v){
-  	var visible: boolean = true
-  	var i:number;
-  	for (i = 0; i < 5; i++){
-  		if (i != v)
-  			visible = visible && !this.visibility[i];
-			else 
-				visible = visible && this.visibility[i];
-  	}
-  	return visible;
+  buttonClass(i) {
+    if (this.selectedIndex == i)
+      return 'btn btn-secondary col-md-2';
+    else return 'btn btn-primary col-md-2';
   }
-
 }

@@ -15,18 +15,18 @@
     </ul>
 
     <div align="Center">
-    	<button class="btn btn-primary col-md-2" (click)="toggle(0)">Work Experience</button>
-    	<button class="btn btn-primary col-md-2" (click)="toggle(1)">Education</button>
-    	<button class="btn btn-primary col-md-2" (click)="toggle(2)">Awards & Achievments</button>
-    	<button class="btn btn-primary col-md-2" (click)="toggle(3)">Projects</button>
-    	<button class="btn btn-primary col-md-2" (click)="toggle(4)">Skills</button>
+      <button *ngFor="let button of buttons; let i = index"
+              class="{{buttonClass(i)}}"
+              (click)="itemClicked(i)">
+        {{button}}
+      </button>
     </div>
     <br>
-    <app-work-experience *ngIf="checkVisibility(0)"></app-work-experience>
-    <app-education *ngIf="checkVisibility(1)"></app-education>
-    <app-awards *ngIf="checkVisibility(2)"></app-awards>
+    <app-work-experience *ngIf="selectedIndex == 0"></app-work-experience>
+    <app-education *ngIf="selectedIndex == 1"></app-education>
+    <app-awards *ngIf="selectedIndex == 2"></app-awards>
 
-    <app-skills *ngIf="checkVisibility(4)"></app-skills>
+    <app-skills *ngIf="selectedIndex == 4"></app-skills>
 
   </div>
 </div>
