@@ -10,6 +10,7 @@ import { QuickInfoComponent } from './quick-info/quick-info.component';
 import { EducationComponent } from './education/education.component';
 import { FooterComponent } from './footer/footer.component';
 import { AwardsComponent } from './awards/awards.component';
+import { SkillsComponent } from './skills/skills.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AwardsComponent } from './awards/awards.component';
     QuickInfoComponent,
     EducationComponent,
     FooterComponent,
-    AwardsComponent
+    AwardsComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,
