@@ -17,7 +17,8 @@
     <div align="Center">
       <button *ngFor="let button of buttons; let i = index"
               class="{{buttonClass(i)}}"
-              (click)="itemClicked(i)">
+              (click)="itemClicked(i)"
+              style="margin: 5px">
         {{button}}
       </button>
     </div>
