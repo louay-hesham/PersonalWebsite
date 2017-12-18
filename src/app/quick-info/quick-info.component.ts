@@ -16,7 +16,7 @@ export class QuickInfoComponent implements OnInit {
 	public visibility: boolean[] = [];
 
   constructor() {
-  	this.workExperience = false;
+  	this.workExperienceVisible = false;
   	this.educationVisible = false;
   	this.awardsVisible = false;
   	this.projectsVisible = false;
