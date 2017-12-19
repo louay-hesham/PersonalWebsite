@@ -1,4 +1,6 @@
-# LouayMorsi.Me
+# http://louay-morsi.Me
+
+This is my personal website which hosts my online resume. I will also use the domain to host some of my future work
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
