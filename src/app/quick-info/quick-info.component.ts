@@ -11,7 +11,7 @@ export class QuickInfoComponent implements OnInit {
   public selectedIndex: number;
 
   constructor() {
-    this.buttons = ["Work Experience", "Education", "Awards & Achievments", "Projects", "Skills"];
+    this.buttons = ["Work Experience", "Education", "Achievments", "Projects", "Skills"];
     this.selectedIndex = -1;
   }
 
@@ -28,5 +28,25 @@ export class QuickInfoComponent implements OnInit {
     if (this.selectedIndex == i)
       return 'btn btn-secondary col-md-2';
     else return 'btn btn-primary col-md-2';
+  }
+
+  buttonIcon(i) {
+    switch(i) {
+      case 0:{
+        return "fa fa-suitcase"
+      }
+      case 1:{
+         return "fa fa-university" 
+      } 
+      case 2:{
+        return "fa fa-trophy"
+      } 
+      case 3:{
+        return "fa fa-code"
+      } 
+      case 4:{
+        return "fa fa-superpowers"
+      }       
+    }
   }
 }
