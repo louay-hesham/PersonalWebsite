@@ -13,6 +13,7 @@ import { AwardsComponent } from './awards/awards.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
 
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,13 @@ import { ProjectsComponent } from './projects/projects.component';
     FooterComponent,
     AwardsComponent,
     SkillsComponent,
-    ProjectsComponent
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule
   ],
-  providers: [],
+  providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
