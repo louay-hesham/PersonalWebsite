@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GoogleAnalyticsService } from '../google-analytics.service';
+
 @Component({
   selector: 'app-work-experience',
   templateUrl: './work-experience.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkExperienceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _GAService: GoogleAnalyticsService) { }
 
   ngOnInit() {
+  	this._GAService.sendPageView("Work Experience");
   }
 
 }
