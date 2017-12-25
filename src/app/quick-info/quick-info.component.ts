@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { GoogleAnalyticsService } from '../google-analytics.service';
-
 @Component({
   selector: 'app-quick-info',
   templateUrl: './quick-info.component.html',
@@ -9,10 +7,9 @@ import { GoogleAnalyticsService } from '../google-analytics.service';
 })
 export class QuickInfoComponent implements OnInit {
   public buttons: string[];
-	public visibility: boolean[];
   public selectedIndex: number;
 
-  constructor(private _GAService: GoogleAnalyticsService) {
+  constructor() {
     this.buttons = ["Work Experience", "Education", "Achievments", "Projects", "Skills"];
     this.selectedIndex = -1;
   }
