@@ -22,4 +22,11 @@ export class GoogleAnalyticsService {
     });
   }
 
+  sendButtonClickEvent(eventLabel: string) {
+    GoogleAnalyticsService.gtag('event', 'select_content', {
+      'event_category': 'engagement',
+      'event_label': eventLabel
+    });
+  }
+
 }

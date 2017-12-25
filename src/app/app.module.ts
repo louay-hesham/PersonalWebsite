@@ -15,6 +15,7 @@ import { ProjectsComponent } from './projects/projects.component';
 
 import { GoogleAnalyticsService } from './google-analytics.service';
 import { PageviewDirective } from './pageview.directive';
+import { EventClickDirective } from './event-click.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PageviewDirective } from './pageview.directive';
     SkillsComponent,
     ProjectsComponent,
     PageviewDirective,
+    EventClickDirective,
   ],
   imports: [
     BrowserModule,
