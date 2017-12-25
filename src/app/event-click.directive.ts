@@ -14,7 +14,6 @@ export class EventClickDirective {
 
   @HostListener('click')
   onClick() {
-  	console.log(this.eventLabel + ' is clicked');
   	this._GAService.sendButtonClickEvent(this.eventLabel);
   }
 
