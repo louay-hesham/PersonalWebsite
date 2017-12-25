@@ -14,6 +14,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from './projects/projects.component';
 
 import { GoogleAnalyticsService } from './google-analytics.service';
+import { PageviewDirective } from './pageview.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GoogleAnalyticsService } from './google-analytics.service';
     AwardsComponent,
     SkillsComponent,
     ProjectsComponent,
+    PageviewDirective,
   ],
   imports: [
     BrowserModule,
