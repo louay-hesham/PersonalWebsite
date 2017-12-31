@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-		<a class="navbar-brand text-light">Louay Morsi</a>
+	<a class="navbar-brand text-light">Louay Morsi</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems" 
+          aria-controls="navbarItems" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+	<div class="collapse navbar-collapse" id="navbarItems">
 	  <ul class="navbar-nav mr-auto">
 	    <li class="nav-item active">
 	      <a class="nav-link" [eventClick]="'NavBar-Home'" href="http://louay-morsi.me">Home</a>
@@ -16,5 +20,6 @@
 	      </a>
 	    </li>
 	  </ul>
+	  <a class="text-light" [eventClick]="'NavBar-SSP Helper'" href="ssp_helper/">SSP Helper</a>
 	</div>
 </nav>
