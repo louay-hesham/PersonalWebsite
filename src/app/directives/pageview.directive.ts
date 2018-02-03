@@ -1,5 +1,5 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import { GoogleAnalyticsService } from './google-analytics.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
 @Directive({
   selector: '[pageview]'
