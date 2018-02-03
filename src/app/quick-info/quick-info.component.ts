@@ -11,7 +11,7 @@ export class QuickInfoComponent implements OnInit {
 
   constructor() {
     this.buttons = ["Work Experience", "Education", "Achievments", "Projects", "Skills"];
-    this.selectedIndex = -1;
+    this.selectedIndex = 0;
   }
 
   ngOnInit() { }

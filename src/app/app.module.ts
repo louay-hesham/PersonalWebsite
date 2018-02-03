@@ -2,21 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 import { AppComponent } from './app.component';
-import { WorkExperienceComponent } from './work-experience/work-experience.component';
-import { QuickInfoComponent } from './quick-info/quick-info.component';
-import { EducationComponent } from './education/education.component';
-import { FooterComponent } from './footer/footer.component';
-import { AwardsComponent } from './awards/awards.component';
-import { SkillsComponent } from './skills/skills.component';
-import { ProjectsComponent } from './projects/projects.component';
-
-import { GoogleAnalyticsService } from './google-analytics.service';
-import { PageviewDirective } from './pageview.directive';
-import { EventClickDirective } from './event-click.directive';
 import { NavbarComponent } from './navbar/navbar.component';
+import { QuickInfoComponent } from './quick-info/quick-info.component';
+  import { WorkExperienceComponent } from './work-experience/work-experience.component';
+  import { EducationComponent } from './education/education.component';
+  import { AwardsComponent } from './awards/awards.component';
+  import { SkillsComponent } from './skills/skills.component';
+  import { ProjectsComponent } from './projects/projects.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { GoogleAnalyticsService } from './services/google-analytics.service';
+import { PageviewDirective } from './services/pageview.directive';
+import { EventClickDirective } from './services/event-click.directive';
 
 @NgModule({
   declarations: [
