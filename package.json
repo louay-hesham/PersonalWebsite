@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "predeploy": "ng build -prod -aot",
+    "predeploy": "ng build --prod --aot",
     "deploy": "node ./scripts/deploy.js"
   },
   "private": true,
