@@ -19,7 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/Resume.pdf"
+              "src/Resume.pdf",
+              "src/AlexQCSS.pdf"
             ],
             "styles": [
               "src/styles.css"
