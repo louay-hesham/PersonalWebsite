@@ -1,14 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-work-experience',
-  templateUrl: './work-experience.component.html',
-  styleUrls: ['./work-experience.component.css']
+  templateUrl: './work-experience.component.html'
 })
-export class WorkExperienceComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() { }
-
-}
+export class WorkExperienceComponent { }

@@ -1,4 +1,4 @@
-<div class="jumbotron" [pageview]="'Home'">
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
   <div class="container">
     <h1>Welcome to my personalized web profile!</h1>
     <p>
@@ -8,26 +8,29 @@
     <h3>Quick info</h3>
 
     <ul>
-      <li><b>Full Name:</b> Louay Hesham Saber Mohamed Morsi</li>
-      <li><b>Nationality:</b> Egyptian</li>
+      <li><b>Name:</b> Louay Morsi</li>
+      <li><b>Nationality:</b> German / Egyptian</li>
       <li><b>City of residence:</b> Berlin, Germany</li>
-      <li><b>Date of birth:</b> 4th of May, 1996</li>
     </ul>
 
-    <div align="Center">
-      <button *ngFor="let button of buttons; let i = index"
-              class="{{buttonClass(i)}}"
-              (click)="itemClicked(i)"
-              style="margin: 5px">
-        <i class="{{buttonIcon(i)}}" aria-hidden="true"></i> {{button}} <i class="{{buttonIcon(i)}}" aria-hidden="true"></i>
-      </button>
+    <div class="text-center">
+      @for (button of buttons; track button; let i = $index) {
+        <button class="btn col-md-2 m-1"
+                [class.btn-secondary]="selectedIndex === i"
+                [class.btn-primary]="selectedIndex !== i"
+                (click)="itemClicked(i)">
+          <i [class]="icons[i]" aria-hidden="true"></i> {{button}} <i [class]="icons[i]" aria-hidden="true"></i>
+        </button>
+      }
     </div>
     <br>
-    <app-work-experience *ngIf="selectedIndex == 0"></app-work-experience>
-    <app-education *ngIf="selectedIndex == 1"></app-education>
-    <app-awards *ngIf="selectedIndex == 2"></app-awards>
-    <app-projects *ngIf="selectedIndex == 3"></app-projects>
-    <app-skills *ngIf="selectedIndex == 4"></app-skills>
+    @switch (selectedIndex) {
+      @case (0) { <app-work-experience /> }
+      @case (1) { <app-education /> }
+      @case (2) { <app-awards /> }
+      @case (3) { <app-projects /> }
+      @case (4) { <app-skills /> }
+    }
 
   </div>
 </div>

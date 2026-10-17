@@ -1,53 +1,52 @@
-const AWS = require("aws-sdk"); // imports AWS SDK
-const mime = require('mime-types') // mime type resolver
-const fs = require("fs"); // utility from node.js to interact with the file system
-const path = require("path"); // utility from node.js to manage file/folder paths
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const mime = require("mime-types");
+const fs = require("fs");
+const path = require("path");
 
-// configuration necessary for this script to run
 const config = {
-  s3BucketName: 'louay-morsi.me',
-  folderPath: '../dist' // path relative script's location
+  s3BucketName: "louay-morsi.me",
+  folderPath: "../dist" // path relative to this script's location
 };
 
-// initialise S3 client
-const s3 = new AWS.S3({ signatureVersion: 'v4' });
-
-// resolve full folder path
+const s3 = new S3Client({});
 const distFolderPath = path.join(__dirname, config.folderPath);
 
-// get of list of files from 'dist' directory
-fs.readdir(distFolderPath, (err, files) => {
+// Recursively list every file under a folder.
+function listFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const full = path.join(dir, entry.name);
+    return entry.isDirectory() ? listFiles(full) : [full];
+  });
+}
 
-  if(!files || files.length === 0) {
-    console.log(`provided folder '${distFolderPath}' is empty or does not exist.`);
-    console.log('Make sure your Angular project was compiled!');
-    return;
+async function main() {
+  if (!fs.existsSync(distFolderPath) || listFiles(distFolderPath).length === 0) {
+    console.error(`'${distFolderPath}' is empty or does not exist. Run 'ng build' first.`);
+    process.exit(1);
   }
 
-  // for each file in the directory
-  for (const fileName of files) {
-
-    // get the full path of the file
-    const filePath = path.join(distFolderPath, fileName);
-
-    // read file contents
-    fs.readFile(filePath, (error, fileContent) => {
-      // if unable to read file contents, throw exception
-      if (error) { throw error; }
-      
-      // map the current file with the respective MIME type
-      const mimeType = mime.lookup(fileName);
-
-      // upload file to S3
-      s3.putObject({
+  let failed = 0;
+  for (const filePath of listFiles(distFolderPath)) {
+    const key = path.relative(distFolderPath, filePath).split(path.sep).join("/");
+    const contentType = mime.lookup(key) || "application/octet-stream";
+    try {
+      await s3.send(new PutObjectCommand({
         Bucket: config.s3BucketName,
-        Key: fileName,
-        Body: fileContent,
-        ContentType: `${mimeType}`
-      }, (res) => {
-        console.log(`Successfully uploaded '${fileName}' with MIME type '${mimeType}'!`);
-      });
-
-    });
+        Key: key,
+        Body: fs.readFileSync(filePath),
+        ContentType: contentType
+      }));
+      console.log(`Uploaded '${key}' (${contentType})`);
+    } catch (err) {
+      failed++;
+      console.error(`FAILED '${key}': ${err.message}`);
+    }
   }
-});
+
+  if (failed > 0) {
+    console.error(`${failed} file(s) failed to upload.`);
+    process.exit(1);
+  }
+}
+
+main();

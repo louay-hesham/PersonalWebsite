@@ -1,51 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { EducationComponent } from './education/education.component';
+import { AwardsComponent } from './awards/awards.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { SkillsComponent } from './skills/skills.component';
 
 @Component({
   selector: 'app-quick-info',
-  templateUrl: './quick-info.component.html',
-  styleUrls: ['./quick-info.component.css']
+  imports: [WorkExperienceComponent, EducationComponent, AwardsComponent, ProjectsComponent, SkillsComponent],
+  templateUrl: './quick-info.component.html'
 })
-export class QuickInfoComponent implements OnInit {
-  public buttons: string[];
-  public selectedIndex: number;
+export class QuickInfoComponent {
+  readonly buttons = ['Work Experience', 'Education', 'Achievements', 'Projects', 'Skills'];
+  readonly icons = [
+    'fa-solid fa-suitcase',
+    'fa-solid fa-building-columns',
+    'fa-solid fa-trophy',
+    'fa-solid fa-code',
+    'fa-brands fa-superpowers'
+  ];
+  selectedIndex = 0;
 
-  constructor() {
-    this.buttons = ["Work Experience", "Education", "Achievments", "Projects", "Skills"];
-    this.selectedIndex = 0;
-  }
-
-  ngOnInit() { }
-
-  itemClicked(i) {
-    if (this.selectedIndex == i)
-      this.selectedIndex = -1;
-    else 
-      this.selectedIndex = i;
-  }
-
-  buttonClass(i) {
-    if (this.selectedIndex == i)
-      return 'btn btn-secondary col-md-2';
-    else return 'btn btn-primary col-md-2';
-  }
-
-  buttonIcon(i) {
-    switch(i) {
-      case 0:{
-        return "fa fa-suitcase"
-      }
-      case 1:{
-         return "fa fa-university" 
-      } 
-      case 2:{
-        return "fa fa-trophy"
-      } 
-      case 3:{
-        return "fa fa-code"
-      } 
-      case 4:{
-        return "fa fa-superpowers"
-      }       
-    }
+  itemClicked(i: number) {
+    this.selectedIndex = this.selectedIndex === i ? -1 : i;
   }
 }

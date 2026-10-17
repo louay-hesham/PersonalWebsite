@@ -1,27 +1,30 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-  it('should create the app', async(() => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({ imports: [AppComponent] }).compileComponents();
+  });
+
+  it('shows the name and nationality, but no full name or date of birth', async () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'app'`, async(() => {
+    await fixture.whenStable();
+    const text = (fixture.nativeElement as HTMLElement).textContent!;
+    expect(text).toContain('Louay Morsi');
+    expect(text).toContain('German / Egyptian');
+    expect(text).not.toContain('Hesham Saber');
+    expect(text).not.toContain('Date of birth');
+  });
+
+  it('toggles a section when its button is clicked', async () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-  }));
+    await fixture.whenStable();
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.textContent).toContain('Work Experience:');
+    const buttons = el.querySelectorAll<HTMLButtonElement>('button.btn');
+    buttons[1].click();
+    await fixture.whenStable();
+    expect(el.textContent).toContain('Education:');
+    expect(el.textContent).not.toContain('Work Experience:');
+  });
 });

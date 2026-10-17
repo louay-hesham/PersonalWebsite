@@ -41,5 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-dandelion.yml
 /bower_components
+/.angular/cache
+dandelion.yml

@@ -1,29 +1,13 @@
-# http://louay-morsi.Me
+# https://louay-morsi.me
 
-This is my personal website which hosts my online resume. I will also use the domain to host some of my future work
+My personal website, which hosts my online resume. Built with Angular and Bootstrap 5, hosted on an S3 bucket.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+Requires Node 22.22+, 24.15+ or 26+.
 
-## Development server
+## Commands
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- `npm install`: install dependencies
+- `npm start`: dev server at http://localhost:4200
+- `npm run build`: production build into `dist/`
+- `npm test`: unit tests (Vitest)
+- `npm run deploy`: build, then upload `dist/` to the `louay-morsi.me` S3 bucket (needs AWS credentials in the environment)
