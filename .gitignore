@@ -44,3 +44,8 @@ Thumbs.db
 /bower_components
 /.angular/cache
 dandelion.yml
+
+# CDK
+/infra/node_modules
+/infra/cdk.out
+/infra/dist

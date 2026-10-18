@@ -9,8 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "predeploy": "ng build",
-    "deploy": "node ./scripts/deploy.js"
+    "deploy": "ng build && npm --prefix infra run deploy"
   },
   "dependencies": {
     "@angular/common": "^22.2.0",
@@ -26,9 +25,7 @@
     "@angular/build": "^22.2.3",
     "@angular/cli": "^22.2.3",
     "@angular/compiler-cli": "^22.2.0",
-    "@aws-sdk/client-s3": "^3.1152.0",
     "jsdom": "^30.0.0",
-    "mime-types": "^3.0.2",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"
   }
