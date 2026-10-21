@@ -81,12 +81,6 @@ export class WebsiteStack extends cdk.Stack {
     const zone = new route53.HostedZone(this, 'Zone', { zoneName: DOMAIN });
     zone.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
 
-    const apex = new route53.ARecord(this, 'ApexAlias', {
-      zone,
-      target: route53.RecordTarget.fromAlias(new targets.BucketWebsiteTarget(siteBucket)),
-    });
-    apex.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
-
     const viewerRequest = new cloudfront.Function(this, 'ViewerRequest', {
       runtime: cloudfront.FunctionRuntime.JS_2_0,
       code: cloudfront.FunctionCode.fromInline(VIEWER_REQUEST_FUNCTION),
@@ -128,6 +122,15 @@ export class WebsiteStack extends cdk.Stack {
         }],
       },
     });
+
+    // DNS points at CloudFront. ApexAlias is the pre-existing A record (imported
+    // earlier, so its logical id must stay); the rest are new.
+    const cloudFrontTarget = route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution));
+    const apex = new route53.ARecord(this, 'ApexAlias', { zone, target: cloudFrontTarget });
+    apex.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
+    new route53.AaaaRecord(this, 'ApexAliasAaaa', { zone, target: cloudFrontTarget });
+    new route53.ARecord(this, 'WwwAlias', { zone, recordName: 'www', target: cloudFrontTarget });
+    new route53.AaaaRecord(this, 'WwwAliasAaaa', { zone, recordName: 'www', target: cloudFrontTarget });
 
     // Consumed by the SSPHelper stack (Fn.importValue) to invalidate /ssp_helper/*.
     new cdk.CfnOutput(this, 'DistributionIdOutput', {
