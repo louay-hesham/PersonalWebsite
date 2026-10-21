@@ -6,7 +6,7 @@
     "build": "tsc --noEmit",
     "synth": "cdk synth",
     "diff": "cdk diff",
-    "deploy": "cdk deploy"
+    "deploy": "cdk deploy --all"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.273.0",

@@ -10,7 +10,7 @@ Requires Node 22.22+, 24.15+ or 26+.
 - `npm start`: dev server at http://localhost:4200
 - `npm run build`: production build into `dist/`
 - `npm test`: unit tests (Vitest)
-- `npm run deploy`: build, then `cdk deploy` the `PersonalWebsite` stack, which uploads `dist/` to the site bucket
+- `npm run deploy`: build, then `cdk deploy --all` (the `PersonalWebsiteCert` and `PersonalWebsite` stacks), which uploads `dist/` to the site bucket
 
 ## Infrastructure (`infra/`)
 
