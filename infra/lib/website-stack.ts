@@ -70,8 +70,12 @@ export class WebsiteStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: WebsiteStackProps) {
     super(scope, id, props);
 
-    const siteBucket = this.websiteBucket('SiteBucket', DOMAIN, {
-      websiteIndexDocument: 'index.html',
+    // Private: only CloudFront (via OAC) reads it; writers authenticate with IAM.
+    const siteBucket = new s3.Bucket(this, 'SiteBucket', {
+      bucketName: DOMAIN,
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
     });
 
     const wwwBucket = this.websiteBucket('WwwBucket', `www.${DOMAIN}`, {
@@ -123,6 +127,9 @@ export class WebsiteStack extends cdk.Stack {
       },
     });
 
+    // The policy is created lazily by the OAC origin above.
+    siteBucket.policy?.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
+
     // DNS points at CloudFront. ApexAlias is the pre-existing A record (imported
     // earlier, so its logical id must stay); the rest are new.
     const cloudFrontTarget = route53.RecordTarget.fromAlias(new targets.CloudFrontTarget(distribution));
@@ -155,7 +162,7 @@ export class WebsiteStack extends cdk.Stack {
     void wwwBucket;
   }
 
-  /** A public-read S3 static-website bucket, as created by hand in the console. */
+  /** A public-read S3 static-website bucket, as created by hand in the console (only the www redirect bucket remains). */
   private websiteBucket(
     logicalId: string,
     bucketName: string,
