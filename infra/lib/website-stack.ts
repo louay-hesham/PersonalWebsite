@@ -129,6 +129,16 @@ export class WebsiteStack extends cdk.Stack {
       },
     });
 
+    // Consumed by the SSPHelper stack (Fn.importValue) to invalidate /ssp_helper/*.
+    new cdk.CfnOutput(this, 'DistributionIdOutput', {
+      value: distribution.distributionId,
+      exportName: 'PersonalWebsiteDistributionId',
+    });
+    new cdk.CfnOutput(this, 'DistributionDomainOutput', {
+      value: distribution.distributionDomainName,
+      exportName: 'PersonalWebsiteDistributionDomain',
+    });
+
     // Publishes the built site (`ng build` output). prune is off on purpose:
     // the bucket also holds ssp_helper/ and older hashed files, which must survive.
     new s3deploy.BucketDeployment(this, 'DeploySite', {
